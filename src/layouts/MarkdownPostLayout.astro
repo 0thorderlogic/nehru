@@ -1,0 +1,56 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Footer from "../components/Footer.astro";
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter.title} header_title={frontmatter.title} header_punc={frontmatter.title_punc}>
+  <p id="upper">{frontmatter.pubDate}<br/>{frontmatter.description}</p>
+  <span><img src={frontmatter.image.url} alt={frontmatter.image.alt} /></span>
+  
+  <div class="content" id="text">
+    <small id="text" class="caption">{frontmatter.image.alt}</small>
+    <main><slot/></main>
+  </div>
+</BaseLayout>
+<style>
+blockquote {
+  outline: auto;
+}
+#upper {
+  margin: 0 20px 20px 20px;
+  font-size: smaller;
+  text-align: center;
+}
+#date, #description {
+  display: flex;
+  align-items: center;
+}
+span {
+  display: flex;
+  justify-content: center;
+}
+img {
+  width: 100%;
+}
+small {
+  color: var(--hover-gray);
+}
+.content {
+  margin: 5px 20px;
+}
+main {
+  font-family: 'STIX Two Text', serif;
+}
+@media screen and (min-width: 1024px) and (min-height: 1320px) {
+  img {
+    outline: solid 20px orange;
+    width: 600px;
+  }  
+}
+@media screen and (min-width: 1024px) and (max-height: 1310px) {
+  img {
+    width: 1000px;
+  }  
+}
+</style>

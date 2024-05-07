@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/BaseLayout.astro';
+import ArchivePost from '../components/ArchivePost.astro';
+import { siteTitle } from '../config';
+
+const allPosts = await Astro.glob("../pages/essays/*.md");
+---
+
+<Layout title={siteTitle + "'s Archive of Essays"} header_title={siteTitle + "'s Archive of Essays"} header_punc="!?">
+	<div id="text">
+		<ul>{allPosts.map((post) => <ArchivePost url={post.url} title={post.frontmatter.title} date={post.frontmatter.pubDate} />)}</ul>
+	</div>
+</Layout>

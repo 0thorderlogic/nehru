@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/BaseLayout.astro';
+import BlogPost from '../components/BlogPost.astro';
+import { siteTitle } from '../config';
+
+const allPosts = await Astro.glob("../pages/essays/*.md");
+---
+
+<Layout title={siteTitle+"'s Homepage"} header_title={siteTitle+"'s Homepage"} header_punc='!'>
+	<span class="container">
+		<img src="_images/pfp.jpg" alt="Pandit Jawaharlal Nehru, First Prime Minister of India"/>
+		<blockquote>
+			Time is not measured by the passing of years but by what one does, what one feels, and what one achieves
+		</blockquote>	
+	</span>
+	<div id="text">
+		<small>Prime Minister of India (1947-1964)</small>
+	</div>
+	<div id="text">
+		<p id="essay-header"><strong>Essays</strong></p><hr/>
+		<ul>{allPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} desc={post.frontmatter.description} date={post.frontmatter.pubDate} />)}</ul>
+	</div>
+</Layout>
+<style>
+.hero-image img{
+	width: 100%;
+	height: 300px;
+	object-fit: cover;
+}
+.container {
+    position: relative;
+	width: 100%;
+	height: 100px;
+	object-fit: cover;
+}
+.container img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover; 
+}
+.container blockquote {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--super-black);
+	color: var(--champagne-pink);
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+    width: 80%;
+    font-size: 1.3rem;
+	font-weight: 700;
+}
+small {
+	color: var(--hover-gray);
+}
+#essay-header {
+	margin-top: 20px;
+}
+</style>

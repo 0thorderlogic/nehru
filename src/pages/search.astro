@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/BaseLayout.astro';
+import SearchField from '../components/SearchField.astro';
+const header_title = "Search (not as good)"
+---
+
+<Layout title={header_title} header_title={header_title} header_punc=''/>
+    <div>
+        <SearchField />        
+    </div>    
+</Layout>
+<style>
+    div {
+        margin: 10px
+    }
+</style>

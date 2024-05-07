@@ -1,0 +1,25 @@
+---
+interface Props {
+	title: string;
+	punc: string;
+}
+
+const { title , punc } = Astro.props;
+---
+<h1>
+	{title}<i>{punc}</i>
+</h1>
+<style is:global>
+	h1 {
+		text-align: center;
+		margin: 10px 0;
+
+		font-family: "Source Serif 4", serif;
+		font-size: 3em;
+		font-weight: 500;
+	}
+	h2, h3, h4, h5, h6 {
+		font-weight: 400;
+		font-family: "Source Serif 4", serif;
+	}
+</style>
